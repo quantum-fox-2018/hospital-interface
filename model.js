@@ -3,82 +3,110 @@ const fs = require('fs')
 const Patient = require('./patient.js')
 
 class Model {
-  static register(username, password, role){
-    let employees = Model.readData('./employee.json')
-    let employee = new Employee(username, role, username, password)
-    employees.push(employee)
-    Model.writeData('./employee.json', employees)
-    let str = `save data success ${JSON.stringify(employee)}. Total employee : ${employees.length}`
-    return str
+  static register(username, password, role, callback){
+    Model.readData('./employee.json', function(data){
+      let employees = data
+      let employee = new Employee(username, role, username, password)
+      employees.push(employee)
+      let str = `save data success ${JSON.stringify(employee)}. Total employee : ${employees.length}`
+      callback(str)
+      Model.writeData('./employee.json', employees)
+    })
   }
 
-  static login(username, password){
-    let employees = Model.readData('./employee.json')
-    for (var i = 0; i < employees.length; i++) {
-      if (employees[i].username === username && employees[i].password === password) {
-        employees[i].isLogin = true
-        Model.writeData("./employee.json", employees)
-        return `user ${username} logged in succesfully`
+  static login(username, password, callback){
+    Model.readData('./employee.json', function(data){
+      let employees = data
+      let str = "username/password wrong"
+      for (var i = 0; i < employees.length; i++) {
+        if (employees[i].isLogin === true) {
+          str = "logout first"
+          i = employees.length
+        }
       }
-    }
-    return `username/password wrong`
+      if (str !== "logout first") {
+        for (var i = 0; i < employees.length; i++) {
+          if (employees[i].username === username && employees[i].password === password) {
+            employees[i].isLogin = true
+            str = `user ${username} logged in succesfully`
+            i = employees.length
+          }
+        }
+      }
+
+      callback(str)
+      Model.writeData('./employee.json', employees)
+    })
   }
 
-  static logout(){
-    let employees = Model.readData('./employee.json')
-    let status = false
-     for (var i = 0; i < employees.length; i++) {
+  static logout(callback){
+    Model.readData('./employee.json', function(data){
+      let employees = data
+      let status = false
+      let str = "you need to login to logout"
+
+      for (var i = 0; i < employees.length; i++) {
        if (employees[i].isLogin === true) {
          employees[i].isLogin = false
          Model.writeData("./employee.json", employees)
-         return "logout succesfully"
-       }
-     }
-     return "you need to login to logout"
-  }
-
-  static addPatient(nama, penyakitArr){
-    //id, name, diagnosis
-    let employees = Model.readData("employee.json")
-    for (var i = 0; i < employees.length; i++) {
-      if (employees[i].isLogin === true) {
-        if (employees[i].position === "dokter") {
-          let id = 1
-          let patients = Model.readData("patient.json")
-          if (patients) {
-            id = patients.length+1
-          }
-          let newPatient = new Patient(id, nama, penyakitArr)
-          patients.push(newPatient)
-          Model.writeData('./patient.json', patients)
-          return `data pasien berhasil ditambahkan, total data pasien ${patients.length}`
-        }else{
-          return "tidak memiliki akses untuk add patient"
+         str = "logout succesfully"
         }
       }
-    }
+       callback(str)
+    })
 
   }
 
-  static status(){
-    let employees = Model.readData('./employee.json')
-    for (var i = 0; i < employees.length; i++) {
-      if (employees[i].isLogin === true) {
-        return employees[i]
+  static addPatient(nama, penyakitArr, callback){
+    Model.readData('./employee.json', function(data){
+      let employees = data
+      let str = "tidak memiliki akses untuk add patient"
+      for (var i = 0; i < employees.length; i++) {
+        if (employees[i].isLogin === true) {
+          if (employees[i].position === "dokter") {
+            let id = 1
+            let patients = []
+            Model.readData("patient.json", function(data){
+              patients = data
+              if (patients) {
+                id = patients.length+1
+              }
+              let newPatient = new Patient(id, nama, penyakitArr)
+              patients.push(newPatient)
+              str = `data pasien berhasil ditambahkan, total data pasien ${patients.length}`
+              callback(str)
+              Model.writeData('./patient.json', patients)
+            })
+          }
+        }
       }
-    }
-    return "belum login, login terlebih dahulu"
+    })
   }
 
-  static writeData(path, str, cb){
-    fs.writeFile(path, JSON.stringify(str), "utf8", function(){
+  static status(callback){
+    Model.readData('./employee.json', function(data){
+      let employees = data
+      let str = "belum login, login terlebih dahulu"
+      for (var i = 0; i < employees.length; i++) {
+        if (employees[i].isLogin === true) {
+          str = employees[i].toString()
+          i = employees.length
+        }
+      }
+      callback(str)
+    })
+  }
+
+  static writeData(path, str){
+    fs.writeFile(path, JSON.stringify(str), "utf8", function(err){
 
     })
   }
 
-  static readData(path){
-    let str = fs.readFileSync(path, 'utf8');
-    return JSON.parse(str);
+  static readData(path, callback){
+    let str = fs.readFile(path, 'utf8', function(err, data){
+      callback(JSON.parse(data))
+    });
   }
 }
 
