@@ -60,8 +60,20 @@ class Model {
 
   }
 
-  static writeData(path, str){
-    fs.writeFileSync(path, JSON.stringify(str), "utf8")
+  static status(){
+    let employees = Model.readData('./employee.json')
+    for (var i = 0; i < employees.length; i++) {
+      if (employees[i].isLogin === true) {
+        return employees[i]
+      }
+    }
+    return "belum login, login terlebih dahulu"
+  }
+
+  static writeData(path, str, cb){
+    fs.writeFile(path, JSON.stringify(str), "utf8", function(){
+
+    })
   }
 
   static readData(path){

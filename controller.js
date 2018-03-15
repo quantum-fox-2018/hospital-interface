@@ -19,6 +19,9 @@ class Controller {
     }else if(command[2].toLowerCase() === "logout"){
       let info = Model.logout()
       View.display(info)
+    }else if(command[2].toLowerCase() === "status"){
+      let info =Model.status()
+      View.display(info)
     }
   }
 }
