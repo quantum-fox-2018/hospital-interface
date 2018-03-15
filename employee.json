@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Ki Joko Bodo",
+    "position": "Tabib",
+    "username": "jokobodo",
+    "password": "12345"
+  },
+  {
+    "name": "Fitrul Islam",
+    "position": "Dokter",
+    "username": "fitrul",
+    "password": "12345"
+  },
+  {
+    "name": "Ki Joko Gendheng",
+    "position": "Tabib",
+    "username": "jokogendheng",
+    "password": "12345"
+  }
+]
