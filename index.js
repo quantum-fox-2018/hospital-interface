@@ -6,4 +6,6 @@ if(process.argv[2] === 'register'){
   hospital.loginEmployee(process.argv[3],process.argv[4]);
 } else if(process.argv[2] === 'addPatient'){
   hospital.addPatient(process.argv);
+} else if(process.argv[2] === 'logout'){
+  hospital.logoutEmployee(process.argv);
 }

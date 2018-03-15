@@ -68,10 +68,18 @@ function loginEmployee(name, password){
 
 }
 
+
+function logoutEmployee(){
+
+  writeFileData(logged_user_file, {});
+  console.log(`user logged out successfully`);
+
+}
+
 function addPatient(patient_data){
   let employee = getFileData(logged_user_file);
-  let id = process.argv[3];
-  let name = process.argv[4];
+  let id;
+  let name = process.argv[3];
   let diagnosis = [];
 
   if(employee.position !== 'dokter'){
@@ -79,13 +87,14 @@ function addPatient(patient_data){
     return;
   }
 
-  for(let index = 4; index < (process.argv).length; index++){
-    if(index !== 4){
+  for(let index = 3; index < (process.argv).length; index++){
+    if(index !== 3){
       diagnosis.push(process.argv[index]);
     }
   }
 
   let patients = getFileData(patient_file);
+  id = patients.length+1;
 
   let new_patient = new Patient(id, name, diagnosis);
 
@@ -100,5 +109,6 @@ function addPatient(patient_data){
 module.exports = {
   registerEmployee,
   loginEmployee,
-  addPatient
+  addPatient,
+  logoutEmployee
 };
