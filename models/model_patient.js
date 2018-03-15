@@ -19,7 +19,10 @@ class ModelPatient {
             console.log(err)
           }
           let login_data = JSON.parse(dataLogin)
-          
+          // console.log(login_data)
+          if(login_data.length == 0){
+            console.log('silakan login dulu dong!!')
+          }
           for(let i=0; i<login_data.length; i++){
             if(login_data[i].position == 'dokter'){
               let idPatient = patient_data.length+1

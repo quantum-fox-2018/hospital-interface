@@ -19,6 +19,8 @@ class Controller{
             case 'addPatient':
                 PatientModel.addPatient(value1, value2, PatientView.addSuccess)
                 break;
+            case 'logout':
+                EmployeeModel.logout()
         }
     }
 }

@@ -9,7 +9,7 @@ class ViewEmployee{
 
     static statusLogin(status, username){
         if(status == true){
-            console.log(`User ${username} logged in succesfully`)
+            console.log(`User "${username}" logged in succesfully`)
         } else {
             console.log('username / password wrong')
         }

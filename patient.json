@@ -8,5 +8,15 @@
     "id": 2,
     "name": "burhan",
     "diagnosis": "sakit encok"
+  },
+  {
+    "id": 3,
+    "name": "burhan",
+    "diagnosis": "sakit encok"
+  },
+  {
+    "id": 4,
+    "name": "ucok",
+    "diagnosis": "sakit tenggorokan"
   }
 ]

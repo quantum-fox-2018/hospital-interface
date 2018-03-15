@@ -55,6 +55,16 @@ class ModelEmployee {
         })
     }
 
+    static logout(){
+        let empty = []
+        fs.writeFile('./data_login.json', JSON.stringify(empty), (err,data) => {
+            if(err){
+                console.log(err)
+            }
+            console.log('Has been logout')
+        })
+    }
+
 }
 
 // ModelEmployee.registerEmployee('agung prabowo','dokter','agung','123456')
