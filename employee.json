@@ -1,17 +1,26 @@
 [
- {
-  "username": "yosa",
-  "password": "123456",
-  "role": "dokter"
- },
- {
-  "username": "risna",
-  "password": "654321",
-  "role": "admin"
- },
- {
-  "username": "jupri",
-  "password": "123456",
-  "role": "office boy"
- }
+  {
+    "name": "",
+    "position": "receptionist",
+    "username": "risna",
+    "password": "123"
+  },
+  {
+    "name": "",
+    "position": "office boy",
+    "username": "joko",
+    "password": "123"
+  },
+  {
+    "name": "",
+    "position": "admin",
+    "username": "eki",
+    "password": "145"
+  },
+  {
+    "name": "",
+    "position": "admin",
+    "username": "wulan",
+    "password": "13"
+  }
 ]
