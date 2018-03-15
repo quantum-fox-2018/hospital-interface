@@ -20,6 +20,12 @@ class Controller {
       harapanKita.addEmployee(newEmployee,Views.registerView)
     } else if(this.command=='login'){
       harapanKita.login(this.content,Views.loginView)
+    } else if(this.command=='addPatient'){
+      let disease = this.content.slice(1)
+      let newPatient = new Patient(this.content[0],disease)
+      harapanKita.addPatient(newPatient,Views.addPatientView)
+    } else if(this.command=='logout'){
+      harapanKita.logout(Views.logoutView)
     }
   }
 }
