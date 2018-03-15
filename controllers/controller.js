@@ -6,7 +6,7 @@ const viewEmployee = require('../views/viewEmployee')
 
 class Controller {
     constructor(){
-        
+         
     }
     static manageCommand(command, value1, value2, value3){
         switch (command) {

@@ -5,7 +5,7 @@ class Hospital {
     this.name = name
     this.employees = employees
     this.patients = patients
-    this.location = location
+    this.location = location 
   }
 
   static listEmployee(callback){
