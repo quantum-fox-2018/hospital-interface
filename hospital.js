@@ -1,3 +1,8 @@
+const fs = require('fs');
+const employee_file = './employees.json';
+const logged_user_file = './logged_user.json';
+const patient_file = './patients.json';
+
 class Hospital {
   constructor(name, location, employees, patients) {
     this.name = name
@@ -23,3 +28,77 @@ class Employee {
     this.password = password
   }
 }
+
+function getFileData(file_path){
+  return JSON.parse(fs.readFileSync(file_path,'utf8'));
+}
+
+function writeFileData(file_path, data){
+  fs.writeFileSync(file_path, JSON.stringify(data));
+}
+
+function registerEmployee(name, password, position){
+  let employees = getFileData(employee_file);
+  let new_employee = new Employee(name, position, name, password);
+
+  employees.push(new_employee);
+
+  writeFileData(employee_file, employees);
+
+  console.log(`save data success { username: ${name}, password: ${password}, position: ${position}}, Total employee ${employees.length}`)
+
+}
+
+function loginEmployee(name, password){
+  let login_check = false;
+  let logged_user;
+  let employees = getFileData(employee_file);
+
+  for(let index in employees){
+    if(employees[index].password === password && employees[index].username === name){
+      login_check = true;
+      logged_user = employees[index];
+      break;
+    }
+  }
+
+  (!login_check) ? console.log('username/password is invalid') : console.log(`user ${name} logged in successfully`);
+
+  writeFileData(logged_user_file, logged_user);
+
+}
+
+function addPatient(patient_data){
+  let employee = getFileData(logged_user_file);
+  let id = process.argv[3];
+  let name = process.argv[4];
+  let diagnosis = [];
+
+  if(employee.position !== 'dokter'){
+    console.log('Only a doctor that can add patient')
+    return;
+  }
+
+  for(let index = 4; index < (process.argv).length; index++){
+    if(index !== 4){
+      diagnosis.push(process.argv[index]);
+    }
+  }
+
+  let patients = getFileData(patient_file);
+
+  let new_patient = new Patient(id, name, diagnosis);
+
+  patients.push(new_patient);
+
+  writeFileData(patient_file,patients);
+
+  console.log(`add patient data success Total employee ${patients.length}`)
+
+}
+
+module.exports = {
+  registerEmployee,
+  loginEmployee,
+  addPatient
+};
