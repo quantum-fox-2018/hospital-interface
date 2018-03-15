@@ -1,9 +1,9 @@
 const fs = require('fs')
 
-const Employee = require('./Employee.js')
-const Patient = require('./Patient.js')
-const Hospital = require('./Hospital.js')
-const Views = require('./view.js')
+const Employee = require('../model/Employee.js')
+const Patient = require('../model/Patient.js')
+const Hospital = require('../model/Hospital.js')
+const Views = require('../view/view.js')
 let data = fs.readFileSync('./employee.json','utf8')
 var employeeData = JSON.parse(data)
 const harapanKita = new Hospital('HarapanSemua','Jakarta',employeeData)

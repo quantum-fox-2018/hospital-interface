@@ -51,9 +51,9 @@ class Hospital {
         let status = false
         let max = 0
         if(employeeData[employeeData.length-1].position=='Dokter'){
-          max = patientData.length
           let patient = {id:max+1,name:input.name,diagnosis:input.diagnosis}
           patientData.push(patient)
+          max = patientData.length
           status = true
           let newFormat = JSON.stringify(patientData,null,2)
           fs.writeFile('./patient.json',newFormat,(err)=>{

@@ -8,5 +8,21 @@
       "pilek",
       "demam"
     ]
+  },
+  {
+    "id": 2,
+    "name": "Joko",
+    "diagnosis": [
+      "batuk",
+      "demam",
+      "muntah-muntah"
+    ]
+  },
+  {
+    "id": 1,
+    "name": "Jimbo",
+    "diagnosis": [
+      "kutil"
+    ]
   }
 ]

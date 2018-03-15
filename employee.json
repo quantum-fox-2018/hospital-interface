@@ -1,15 +1,21 @@
 [
   {
+    "name": "Eki Fakhrureza",
+    "position": "Perawat",
+    "username": "eki",
+    "password": "09876"
+  },
+  {
     "name": "Fitrul Islam",
     "position": "Dokter",
     "username": "fitrul",
     "password": "12345"
   },
   {
-    "name": "Eki Fakhrureza",
-    "position": "Perawat",
-    "username": "eki",
-    "password": "09876"
+    "name": "Ki Joko Gendheng",
+    "position": "Tabib",
+    "username": "jokogendheng",
+    "password": "12345"
   },
   {
     "name": "Ki Joko Bodo",
@@ -18,9 +24,9 @@
     "password": "12345"
   },
   {
-    "name": "Ki Joko Gendheng",
-    "position": "Tabib",
-    "username": "jokogendheng",
-    "password": "12345"
+    "name": "Laki Suka Tantangan",
+    "position": "Perawat",
+    "username": "laki",
+    "password": "34567"
   }
 ]
