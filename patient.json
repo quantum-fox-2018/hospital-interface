@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "name": "aagym",
+    "diagnosis": [
+      "batu",
+      "demam",
+      "pilek"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "koko",
+    "diagnosis": [
+      "cacingan",
+      "berakTerus"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "kiki",
+    "diagnosis": [
+      "sumeng",
+      "rewel",
+      "benjol"
+    ]
+  }
+]
