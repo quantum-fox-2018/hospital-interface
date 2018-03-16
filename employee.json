@@ -1,0 +1,72 @@
+[
+  {
+    "name": "budi",
+    "role": "dokter",
+    "username": "budi",
+    "password": "12345",
+    "isloggedin": false
+  },
+  {
+    "name": "anisa",
+    "role": "dokter",
+    "username": "anisa",
+    "password": "1234",
+    "isloggedin": false
+  },
+  {
+    "name": "asep",
+    "role": "dokter",
+    "username": "asep",
+    "password": "1234",
+    "isloggedin": true
+  },
+  {
+    "name": "jambul",
+    "role": "admin",
+    "username": "jambul",
+    "password": "1990",
+    "isloggedin": false
+  },
+  {
+    "name": "jamban",
+    "role": "receptionist",
+    "username": "jamban",
+    "password": "1995",
+    "isloggedin": false
+  },
+  {
+    "name": "uda",
+    "role": "officeboy",
+    "username": "uda",
+    "password": "malang1993",
+    "isloggedin": false
+  },
+  {
+    "name": "adi",
+    "role": "admin",
+    "username": "adi",
+    "password": "1234",
+    "isloggedin": false
+  },
+  {
+    "name": "anisa",
+    "role": "dokter",
+    "username": "anisa",
+    "password": "1234",
+    "isloggedin": false
+  },
+  {
+    "name": "kangasep",
+    "role": "admin",
+    "username": "kangasep",
+    "password": "14045",
+    "isloggedin": false
+  },
+  {
+    "name": "kangujang",
+    "role": "officeboy",
+    "username": "kangujang",
+    "password": "14045",
+    "isloggedin": false
+  }
+]
