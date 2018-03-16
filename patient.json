@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "Samson",
+    "diagnosis": "sakit perut ga karuan"
+  },
+  {
+    "id": 2,
+    "name": "Tukul",
+    "diagnosis": "batuk batuk sipirili"
+  },
+  {
+    "id": 3,
+    "name": "adi",
+    "diagnosis": "berak berak"
+  }
+]
