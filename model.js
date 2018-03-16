@@ -38,14 +38,18 @@ class Model{
 
   static loginEmployeeCommand(username,password){
     let employeeData = Model.readEmployeeData();
+    let loginCondition = false
     for(let i=0;i<employeeData.length;i++){
       if(employeeData[i].username == username && employeeData[i].password == password){
         employeeData[i].status = "available";
-        Model.writeEmployeeData(employeeData);
-        return true
+        loginCondition = true;
+      }
+      else{
+        employeeData[i].status = "unavailable";
       }
     }
-    return false
+    Model.writeEmployeeData(employeeData);
+    return loginCondition
   }
 
   static addPatientCommand(id,patientName,penyakitPasien){
