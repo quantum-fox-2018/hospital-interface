@@ -1,12 +1,6 @@
-const fs = require('fs')
 
-const Employee = require('../model/Employee.js')
-const Patient = require('../model/Patient.js')
-const Hospital = require('../model/Hospital.js')
+const Model = require('../model/Model.js')
 const Views = require('../view/view.js')
-let data = fs.readFileSync('./employee.json','utf8')
-var employeeData = JSON.parse(data)
-const harapanKita = new Hospital('HarapanSemua','Jakarta',employeeData)
 
 class Controller {
   constructor(command,content) {
@@ -15,17 +9,19 @@ class Controller {
   }
 
   execute(){
-    if(this.command == 'register'){
-      let newEmployee = new Employee(this.content[0],this.content[1],this.content[2],this.content[3])
-      harapanKita.addEmployee(newEmployee,Views.registerView)
+    if(this.command == 'help'){
+      Views.help()
+    } else if(this.command == 'employeeList'){
+      Model.employeeList(Views.listView)
+    } else if(this.command == 'register'){
+      Model.addEmployee(this.content,Views.registerView)
     } else if(this.command=='login'){
-      harapanKita.login(this.content,Views.loginView)
+      Model.login(this.content,Views.loginView)
     } else if(this.command=='addPatient'){
       let disease = this.content.slice(1)
-      let newPatient = new Patient(this.content[0],disease)
-      harapanKita.addPatient(newPatient,Views.addPatientView)
+      Model.addPatient(this.content,disease,Views.addPatientView)
     } else if(this.command=='logout'){
-      harapanKita.logout(Views.logoutView)
+      Model.logout(Views.logoutView)
     }
   }
 }

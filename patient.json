@@ -1,28 +1,33 @@
 [
   {
     "id": 1,
-    "name": "Daniel",
+    "name": "Joko",
     "diagnosis": [
-      "batuk",
       "flu",
-      "pilek",
-      "demam"
+      "muntaber"
     ]
   },
   {
     "id": 2,
-    "name": "Joko",
+    "name": "Riki",
     "diagnosis": [
-      "batuk",
-      "demam",
-      "muntah-muntah"
+      "puyeng",
+      "muntah"
     ]
   },
   {
-    "id": 1,
-    "name": "Jimbo",
+    "id": 3,
+    "name": "Jemba",
     "diagnosis": [
-      "kutil"
+      "perut",
+      "terlilit"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Budi",
+    "diagnosis": [
+      "flu budi"
     ]
   }
 ]
