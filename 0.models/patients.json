@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "Naruto",
+    "diagnosis": "sakit patah hati yang sangat teramat dalam"
+  },
+  {
+    "id": 2,
+    "name": "Neji",
+    "diagnosis": "sakit mata akut"
+  },
+  {
+    "id": "3",
+    "name": "Lee",
+    "diagnosis": "patah tulang di sekujur tubuh dimana-mana"
+  }
+]

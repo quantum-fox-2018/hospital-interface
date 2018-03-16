@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Tsunade",
+    "position": "Docter",
+    "username": "hokage5",
+    "password": "dan4life",
+    "loginStatus": false
+  },
+  {
+    "name": "Tenten",
+    "position": "Admin",
+    "username": "sword123",
+    "password": "jurussenjata",
+    "loginStatus": false
+  },
+  {
+    "name": "Ino",
+    "position": "Receptionist",
+    "username": "flower77",
+    "password": "kabuki",
+    "loginStatus": false
+  },
+  {
+    "name": "Sai",
+    "position": "OfficeBoy",
+    "username": "drawer23",
+    "password": "drawdrawdraw",
+    "loginStatus": false
+  },
+  {
+    "name": "Sakura",
+    "position": "Docter",
+    "username": "bungarampai",
+    "password": "chyanaro",
+    "loginStatus": true
+  }
+]
