@@ -1,80 +1,55 @@
 const fs = require('fs');
+const Employee = require('./employee.js');
 
-class Hospital {
-  constructor(name, location, employees, patients) {
-    this._name = name
-    this._employees = employees
-    this._patients = patients
-    this._location = location
+class Model {
+  static readData(file, callback) {
+    fs.readFile(file, 'utf8', (err, rawData) => {
+      let dataEmployee = JSON.parse(rawData);
+      callback(dataEmployee);
+    });
   }
 
-  set employees(value) {
-    this._employees.push(value);
+  static writeData(file, dataEmployee) {
+    fs.writeFile(file, JSON.stringify(dataEmployee, null, 2), err => {
+    });
   }
 
-  get employees() {
-    return this._employees;
+  static register(file, objRegist, callback) {
+    Model.readData(file, dataEmployee => {
+      let newEmployee = new Employee(objRegist);
+      dataEmployee.push(newEmployee);
+      Model.writeData(file, dataEmployee);
+      callback(newEmployee);
+    });
   }
+
+  static login(file, objLogin, callback) {
+    Model.validateLogin(file, objLogin, loginStatus => {
+      let result;
+      if (loginStatus == true) {
+        result = 'Login Successful!';
+      } else {
+        result = 'Login Failed! Wrong Username/Password!';
+      }
+      callback(result);
+    })
+  }
+
+  static validateLogin(file, objLogin, callback) {
+    let loginStatus = false;
+    Model.readData(file, dataEmployee => {
+      for (let i in dataEmployee) {
+        if (objLogin.username == dataEmployee[i].username
+          && objLogin.password == dataEmployee[i].password) {
+            loginStatus = true;
+            dataEmployee[i].loginStatus = true;
+            Model.writeData(file, dataEmployee)
+          }
+      }
+      callback(loginStatus);
+    });
+  }
+
 }
 
-class Patient {
-  constructor(id, name, diagnosis) {
-    this._id = id
-    this._name = name
-    this._diagnosis = diagnosis
-  }
-
-  addPatient() {
-
-  }
-}
-
-class Employee {
-  constructor(name, position, username, password) {
-    this.name = name
-    this._position = position
-    this._username = username
-    this._password = password
-  }
-
-  register(name, password, role) {
-    this._username = name;
-    this._password = password;
-    this._position = role;
-
-    Hospital.employees = this;
-    let result = `save data success ${this}. Total employee : ${Hospital.employees.length}`;
-
-    return result;
-  }
-}
-
-class Admin extends Employee {
-  constructor(name, position, username, password) {
-    super(name, position, username, password);
-  }
-}
-
-class OfficeBoy extends Employee {
-  constructor(name, position, username, password) {
-    super(name, position, username, password);
-  }
-}
-
-class Receptionist extends Employee {
-  constructor(name, position, username, password) {
-    super(name, position, username, password);
-  }
-}
-
-class Docter extends Employee {
-  constructor(name, position, username, password) {
-    super(name, position, username, password);
-  }
-}
-
-module.exports = {
-  Hospital,
-  Patient,
-  Employee
-}
+module.exports = Model;
