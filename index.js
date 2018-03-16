@@ -7,7 +7,7 @@ index.js register firstname lastname position username password
 login :
 index.js login username password
 addPatient :
-index.js patientName diagnosis
+index.js "patientName" "diagnosis"
 logout :
 index.js logout
 

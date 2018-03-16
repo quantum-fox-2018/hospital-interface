@@ -19,11 +19,11 @@ class Model{
       if (err) throw err;
           var listEmployeeSave = JSON.parse(data)
           var logedIn = false
-          let counter = 0
+          let counter = listEmployeeSave.length
           for(let i = 0; i < listEmployeeSave.length; i++){
             if(listEmployeeSave[i].login === true){
               callback(`gak bisa login, user ${listEmployeeSave[i].username} masih login`);
-              counter ++
+              counter --
             }
           }
           if(counter === listEmployeeSave.length){
@@ -57,7 +57,6 @@ class Model{
                 if (err) throw err;
                     var listPatients = JSON.parse(data)
                     var idPatient = 0
-                    callback.log(listPatients.length)
                     if(listPatients.length === 0){
                       idPatient = 1
                     }else {

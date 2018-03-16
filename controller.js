@@ -8,6 +8,7 @@ class Controller {
       })
   }
   static hospitalLogin(username, password){
+    //console.log(username, password)
     model.statusLogin(username, password, strLogin =>{
     view.print(strLogin)
     })

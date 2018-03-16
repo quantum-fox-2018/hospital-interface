@@ -18,14 +18,14 @@
     "position": "admin",
     "username": "batRider",
     "password": "bm128",
-    "login": false
+    "login": true
   },
   {
     "name": "Scarlett Johansson",
     "position": "dokter",
     "username": "blackWidow",
     "password": "sc01234",
-    "login": false
+    "login": true
   },
   {
     "name": "Rebecca Olsen",

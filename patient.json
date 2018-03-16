@@ -1,18 +1,12 @@
 [
   {
     "id": 1,
-    "name": "batuk batuk muntah paku"
+    "name": "roy",
+    "diagnosis": "hilang ingatan"
   },
   {
     "id": 2,
-    "name": "batuk batuk muntah paku"
-  },
-  {
-    "id": 3,
-    "name": "batuk batuk muntah paku"
-  },
-  {
-    "id": 4,
-    "name": "batuk batuk muntah paku"
+    "name": "james",
+    "diagnosis": "trauma live code"
   }
 ]
