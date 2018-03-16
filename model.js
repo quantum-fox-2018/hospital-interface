@@ -3,6 +3,19 @@ const fs = require('fs')
 const Patient = require('./patient.js')
 
 class Model {
+
+  static displayEmployee(callback){
+    Model.readData('./employee.json', function(data){
+      callback(data)
+    })
+  }
+
+  static displayPatient(callback){
+    Model.readData('./patient.json', function(data){
+      callback(data)
+    })
+  }
+
   static register(username, password, role, callback){
     Model.readData('./employee.json', function(data){
       let employees = data
@@ -89,7 +102,7 @@ class Model {
       let str = "belum login, login terlebih dahulu"
       for (var i = 0; i < employees.length; i++) {
         if (employees[i].isLogin === true) {
-          str = employees[i].toString()
+          str = `login account : ${employees[i].username}`
           i = employees.length
         }
       }
