@@ -1,0 +1,61 @@
+[
+  {
+    "id": 1,
+    "name": "Deku",
+    "diagnosis": [
+      "Pusing",
+      "Pilek",
+      "Batuk"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Jono",
+    "diagnosis": [
+      "batuk",
+      "flu",
+      "pilek",
+      "demam"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Jaka",
+    "diagnosis": [
+      "Mag",
+      "pilek",
+      "demam"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Joki",
+    "diagnosis": [
+      "pusing",
+      "Mag",
+      "pilek",
+      "demam"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Jajang",
+    "diagnosis": [
+      "abok",
+      "pusing",
+      "Mag",
+      "pilek",
+      "demam"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Jajang",
+    "diagnosis": [
+      "abok",
+      "pusing",
+      "Mag",
+      "pilek"
+    ]
+  }
+]

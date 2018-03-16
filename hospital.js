@@ -1,80 +1,184 @@
 //model files
 const fs = require ('fs');
 const Employee = require("./employee.js");
+const Patient = require("./patient.js");
 
 class Hospital {
-  constructor(name, location, patients) {
-    this.name = "RSU Cikarang"//name
-    this.employees = require("./employee.json");//employees
-    this.patients = patients
-    this.location = "Cikarang Utara";
-    this.currentUser = require("./currentUser.json");;
+  constructor() {
+
   }
 
-  commandCheck(param_command){
+  static commandCheck(param_command, cbResult){
     let command = param_command[2];
 
     //ga pake break soalny dah langsung return
     switch (command) {
       case 'show':
+          let secondAction = param_command[3];
+          return Hospital.showData(secondAction, cbResult);
+
       case undefined:
-          return this;
+          return cbResult(`masukan action / command`);
 
       case 'register':
-          return this.addEmployee(param_command[3], param_command[4], param_command[5]);
+          let reg_username = param_command[3];
+          let reg_password = param_command[4];
+          let reg_jabatan = param_command[5];
+          return Hospital.addEmployee(reg_username, reg_password, reg_jabatan, cbResult);
+          //return Hospital.readEmployeeData(Hospital.addEmployee(Employeedata, reg_username, reg_password, reg_jabatan));
 
       case 'login':
-          return this.validateLogin(param_command[3], param_command[4]);
+          let username_login = param_command[3];
+          let password_login = param_command[4];
+          return Hospital.validateLogin(username_login, password_login, cbResult);
+
+      case 'logout':
+          let username_logout = param_command[3];
+          return Hospital.userLogout(username_logout, cbResult);
+
+      case 'addPatient':
+          let patientName = param_command[3];
+          let diagnose = param_command.slice(4);
+          return Hospital.addPatient(patientName, diagnose, Hospital.cekUserLogin, cbResult);
 
 
       default:
-          return `Nama Command belum ada!`;
+          return cbResult(`Nama action / command belum ada!`);
 
     }
   }
 
-  addEmployee(name, password, position){
-    if(name != undefined || password != undefined || position != undefined){
-        let newEmployee = new Employee(name, position, name, password);
-        this.employees.push(newEmployee);
-        let employeeData = this.employees.length;
-        this.updateEmployee();
-        return `save data success {"username":"${name}","password":"${password}","role":"${position}"}. Total employee :${employeeData}`;
-    }else{
-        return `data gagal di tambah`;
+  static showData(secondAction, cbResult){
+    switch (secondAction) {
+      case 'patient':
+          cbResult('Data Patient');
+          break;
+      case 'employee':
+          cbResult('Data employee');
+          break;
+      default:
+          cbResult(`action ${secondAction} belum ada!`);
     }
-
   }
 
-  updateEmployee(){
-    fs.writeFile('employee.json', JSON.stringify(this.employees, null, 2));
+  static cekUserLogin(patientName, diagnose, cbResult){
+
+    Hospital.readPatientData((patientData) => {
+      let lastId = Hospital.patient_id_auto(patientData);
+      let newPatient = new Patient(lastId, patientName, diagnose);
+      patientData.push(newPatient);
+      Hospital.updatePatientData(patientData);
+      let totalPatientData = patientData.length;
+      let result = `data pasien berhasil ditambahkan. Total data pasien : ${totalPatientData}`;
+      cbResult(result);
+    });
   }
 
-  validateLogin(userName, password){
-    let employeeData = this.employees;
+  static patient_id_auto(patientData){
+    let patientLaskIndex = patientData.length-1;
+    let lastId = patientData[patientLaskIndex].id;
+    lastId += 1;
+    return lastId;
+  }
 
-    for(let employeeIndex = 0; employeeIndex < employeeData.length; employeeIndex++){
-        if(employeeData[employeeIndex].username == userName && employeeData[employeeIndex].password == password){
-            this.userLogin(employeeData[employeeIndex]);
-            console.log('Kesini ga?');
-            return `user ${userName} logged in successfully`;
+  static addPatient(patientName, diagnose, cbUserCheck, cbResult){
+
+    Hospital.readEmployeeData((Employeedata) =>{
+      let isItDocter = false;
+      for(let employeeIndex = 0; employeeIndex < Employeedata.length; employeeIndex++){
+        if(Employeedata[employeeIndex].isLogin == "true" &&
+          Employeedata[employeeIndex].position == "dokter"){
+            cbUserCheck(patientName, diagnose, cbResult);
+            isItDocter = true;
         }
+      }
+
+      if(isItDocter == false){
+        let result = `Hanya dokter yang bisa menambah patient`;
+        cbResult(result);
+      }
+
+    });
+
+  }
+
+  static readPatientData(cb){
+    fs.readFile("./patient.json", "utf8", (err, patientData)=>{
+      cb(JSON.parse(patientData));
+    });
+  }
+
+  static updatePatientData(patientData){
+    fs.writeFile("./patient.json", JSON.stringify(patientData, null, 2));
+  }
+
+  static addEmployee(name, password, position, cbResult){
+    if(name != undefined || password != undefined || position != undefined){
+
+        Hospital.readEmployeeData((employeeData) =>{
+            let newEmployee = new Employee(name, position, name, password);
+            employeeData.push(newEmployee);
+            Hospital.updateEmployeeData(employeeData);
+            let result = `save data success {"username":"${name}","password":"${password}","role":"${position}"}. Total employee :${employeeData.length}`;
+            cbResult(result);
+        });
+
+    }else{
+        return `nama, password / jabatan harus di isi!`;
     }
 
-    return `username / password salah`;
   }
 
-  userLogin(UserData){
-    this.currentUser.push(UserData);
-    fs.writeFile('currentUser.json', JSON.stringify(this.currentUser, null, 2));
+  static readEmployeeData(cb){
+    fs.readFile("./employee.json", "utf8", (err, Employeedata)=>{
+      cb(JSON.parse(Employeedata));
+    });
   }
-}
 
-class Patient {
-  constructor(id, name, diagnosis) {
-    this.id = id
-    this.name = name
-    this.diagnosis = diagnosis
+  static updateEmployeeData(Employeedata){
+    fs.writeFile('employee.json', JSON.stringify(Employeedata, null, 2));
+  }
+
+  static validateLogin(userName, password, cbResult){
+
+    Hospital.readEmployeeData((Employeedata) =>{
+        let userLoginIndex = -1;
+
+        for(let employeeIndex = 0; employeeIndex < Employeedata.length; employeeIndex++){
+            if(Employeedata[employeeIndex].isLogin == 'true'){
+                let userName = Employeedata[employeeIndex].username;
+                let result = `user ${userName} still login`;
+                cbResult(result);
+                break;
+            }
+
+            if(Employeedata[employeeIndex].username == userName &&
+              Employeedata[employeeIndex].password == password){
+                userLoginIndex = employeeIndex;
+            }
+        }
+
+        if(userLoginIndex != -1){
+            Employeedata[userLoginIndex].isLogin = 'true';
+            Hospital.updateEmployeeData(Employeedata);
+            let result = `user ${userName} logged in successfully`;
+            cbResult(result);
+        }
+    });
+
+  }
+
+  static userLogout(userName, cbResult){
+    Hospital.readEmployeeData((Employeedata) =>{
+      for(let employeeIndex = 0; employeeIndex < Employeedata.length; employeeIndex++){
+        if(Employeedata[employeeIndex].username == userName){
+            Employeedata[employeeIndex].isLogin = 'false';
+            Hospital.updateEmployeeData(Employeedata);
+            let result = `user ${userName} Logout from the program..`;
+            cbResult(result);
+        }
+      }
+    });
   }
 }
 

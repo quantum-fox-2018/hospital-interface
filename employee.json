@@ -3,24 +3,35 @@
     "name": "budi",
     "position": "dokter",
     "username": "budi",
-    "password": "123456"
+    "password": "123456",
+    "isLogin": "false"
   },
   {
     "name": "angga",
     "position": "admin",
     "username": "angga",
-    "password": "54321"
+    "password": "54321",
+    "isLogin": "false"
   },
   {
     "name": "dani",
     "position": "Admin",
     "username": "dani",
-    "password": "21212"
+    "password": "21212",
+    "isLogin": "true"
   },
   {
     "name": "Udin",
     "position": "Perawat",
     "username": "Udin",
-    "password": "765489"
+    "password": "765489",
+    "isLogin": "false"
+  },
+  {
+    "name": "damam",
+    "position": "asdaq",
+    "username": "damam",
+    "password": "1434534",
+    "isLogin": "false"
   }
 ]
