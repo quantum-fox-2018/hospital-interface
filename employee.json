@@ -12,5 +12,11 @@
     "password": "666666",
     "role": "doctor",
     "loginStatus": false
+  },
+  {
+    "name": "Rikimaru",
+    "username": "123123",
+    "password": "receptionist",
+    "loginStatus": false
   }
 ]
