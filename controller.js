@@ -4,7 +4,13 @@ const {Model} = require('./model.js');
 class Controller {
   static do(input) {
     let menu = input[2];
-    if(menu === "register") {
+    if(menu === "list") {
+      let path = './employee.json';
+      if(input[3] === "patient") {
+        path = './patient.json';
+      }
+      Model.readData(path, View.viewTable);
+    } else if(menu === "register") {
       let objEmp = {
         name: input[3],
         username: input[3],
