@@ -23,10 +23,6 @@ class Controller {
         View.display(str)
       })
     }else if(command[2].toLowerCase() === "addpatient"){
-      let listPenyakit =[]
-      for (var i = 4; i < command.length; i++) {
-        listPenyakit.push(command[i])
-      }
       Model.addPatient(command, function(str){
         View.display(str)
       })
