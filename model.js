@@ -28,8 +28,7 @@ class Model{
 
   static registerEmployeeCommand(username,password,position,cbNewEmployeeData){
 
-    this.readEmployeeData((cbEmployeeData) =>{
-      var employeeData = cbEmployeeData;
+    this.readEmployeeData((employeeData) =>{
       let newEmployee = new Employee(username,password,position);
       employeeData.push(newEmployee);
       this.writeEmployeeData(employeeData)
@@ -45,8 +44,7 @@ class Model{
 
   static loginEmployeeCommand(username,password,cbLoginCondition){
 
-    this.readEmployeeData((cbEmployeeData)=>{
-      let employeeData = cbEmployeeData;
+    this.readEmployeeData((employeeData)=>{
       let loginCondition = false
       for(let i=0;i<employeeData.length;i++){
         if(employeeData[i].username == username && employeeData[i].password == password){
@@ -64,8 +62,7 @@ class Model{
   }
 
   static logoutEmployeeCommand(username,cbLogoutCondition){
-    this.readEmployeeData((cbEmployeeData)=>{
-      let employeeData = cbEmployeeData;
+    this.readEmployeeData((employeeData)=>{
       let logoutCondition = false;
       for(let i=0;i<employeeData.length;i++){
         if(employeeData[i].username == username && employeeData[i].status == "available"){
@@ -82,20 +79,24 @@ class Model{
 
     this.readEmployeeData(cbEmployeeData=>{
       let employeeData = cbEmployeeData;
+      let checkData = false;
       for(let i=0;i<employeeData.length;i++){
         //Cari dokter yang available
         if(employeeData[i].position == "dokter" && employeeData[i].status == "available"){
           //Jika belum ada property pasien
-          if(employeeData[i].patient == undefined){
+          if(employeeData[i].patient === undefined){
             employeeData[i].patient = [];
           }
           let newPatient = new Patient((employeeData[i].patient.length+1),patientName,penyakitPasien);
           employeeData[i].patient.push(newPatient);
           Model.writeEmployeeData(employeeData);
+          checkData = true;
           cbUpdateDataPatient(employeeData[i]);
         }
       }
-      cbUpdateDataPatient(undefined);
+      if(checkData == false){
+        cbUpdateDataPatient(undefined)
+      }
     });
   }
 }

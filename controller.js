@@ -5,31 +5,28 @@ class Controller{
 
   static registerEmployeeCommand(username,password,position,cbNewEmployeeData){
 
-    Model.registerEmployeeCommand(username,password,position,(cbNewEmployeeData)=>{
-      let totalEmployee = cbNewEmployeeData.length;
+    Model.registerEmployeeCommand(username,password,position,(newEmployeeData)=>{
+      let totalEmployee = newEmployeeData.length;
       View.registerEmployeeView(username,password,position,totalEmployee)
     })
   }
 
   static loginEmployeeCommand(username,password,cbLoginCondition){
-    Model.loginEmployeeCommand(username,password,(cbLoginCondition)=>{
-      let loginCondition = cbLoginCondition;
+    Model.loginEmployeeCommand(username,password,(loginCondition)=>{
       View.loginEmployeeView(loginCondition,username);
     });
 
   }
 
   static logoutEmployeeCommand(username,cbLogoutCondition){
-    Model.logoutEmployeeCommand(username,(cbLogoutCondition)=>{
-      let logoutCondition = cbLogoutCondition;
+    Model.logoutEmployeeCommand(username,(logoutCondition)=>{
       View.logoutEmployeeView(logoutCondition);
     })
   }
   static addPatientCommand(patientName,penyakitPasien){
 
-    Model.addPatientCommand(patientName,penyakitPasien,cbUpdateDataPatient=>{
-      let updateDataPatient = cbUpdateDataPatient;
-      View.addPatientView(updateDataPatient);
+    Model.addPatientCommand(patientName,penyakitPasien, (updatedDataPatient)=>{
+      View.addPatientView(updatedDataPatient);
     });
   }
 }
