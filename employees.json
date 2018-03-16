@@ -1,0 +1,35 @@
+{
+  "name": "RS Sehat Jiwa",
+  "employees": [
+    {
+      "name": "budi",
+      "position": "dokter",
+      "username": "budi",
+      "password": "1234"
+    },
+    {
+      "name": "tina",
+      "position": "suster",
+      "username": "tina",
+      "password": "5678"
+    },
+    {
+      "name": "laksamana",
+      "position": "dokter",
+      "username": "laksamana",
+      "password": "0000"
+    }
+  ],
+  "patients": [
+    {
+      "id": 1,
+      "name": "ronald",
+      "diagnosis": [
+        "muntaber",
+        "cadas",
+        "kurap"
+      ]
+    }
+  ],
+  "location": "Jln. Bang Udin 1, RT09/RW01, Pondok Indah, Jakarta"
+}
