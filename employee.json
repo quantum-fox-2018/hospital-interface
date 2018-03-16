@@ -1,1 +1,9 @@
-[{"name":"budi","position":"dokter","username":"budi","password":"123456","status":"unavailable"},{"name":"dimas","position":"admin","username":"dimas","password":"654321","status":"unavailable"},{"name":"angga","position":"dokter","username":"angga","password":"123456","status":"unavailable"}]
+[
+  {
+    "name": "ramadiansyah",
+    "position": "dokter",
+    "username": "ramadiansyah",
+    "password": "123456",
+    "status": "unavailable"
+  }
+]

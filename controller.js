@@ -3,20 +3,34 @@ const View = require('./view')
 
 class Controller{
 
-  static registerEmployeeCommand(username,password,position){
-    let newEmployee = Model.registerEmployeeCommand(username,password,position);
-    let totalEmployee = Model.readEmployeeData().length;
-    View.registerEmployeeView(newEmployee,totalEmployee)
+  static registerEmployeeCommand(username,password,position,cbNewEmployeeData){
+
+    Model.registerEmployeeCommand(username,password,position,(cbNewEmployeeData)=>{
+      let totalEmployee = cbNewEmployeeData.length;
+      View.registerEmployeeView(username,password,position,totalEmployee)
+    })
   }
 
-  static loginEmployeeCommand(username,password){
-    let loginCondition = Model.loginEmployeeCommand(username,password);
-    View.loginEmployeeView(loginCondition,username);
+  static loginEmployeeCommand(username,password,cbLoginCondition){
+    Model.loginEmployeeCommand(username,password,(cbLoginCondition)=>{
+      let loginCondition = cbLoginCondition;
+      View.loginEmployeeView(loginCondition,username);
+    });
+
   }
 
-  static addPatientCommand(id,patientName,penyakitPasien){
-    let newPatient = Model.addPatientCommand(id,patientName,penyakitPasien);
-    View.addPatientView(newPatient);
+  static logoutEmployeeCommand(username,cbLogoutCondition){
+    Model.logoutEmployeeCommand(username,(cbLogoutCondition)=>{
+      let logoutCondition = cbLogoutCondition;
+      View.logoutEmployeeView(logoutCondition);
+    })
+  }
+  static addPatientCommand(patientName,penyakitPasien){
+
+    Model.addPatientCommand(patientName,penyakitPasien,cbUpdateDataPatient=>{
+      let updateDataPatient = cbUpdateDataPatient;
+      View.addPatientView(updateDataPatient);
+    });
   }
 }
 

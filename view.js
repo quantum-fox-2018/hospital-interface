@@ -1,6 +1,6 @@
 class View{
-  static registerEmployeeView(newEmployee,totalEmployee){
-    console.log(`save data success ${newEmployee.username}, ${newEmployee.password}, ${newEmployee.position}. Total employee : ${totalEmployee}`);
+  static registerEmployeeView(username,password,position,totalEmployee){
+    console.log(`save data success ${username}, ${password}, ${position}. Total employee : ${totalEmployee}`);
   }
 
   static loginEmployeeView(loginCondition,username){
@@ -8,6 +8,12 @@ class View{
       console.log((`user ${username} logged in successfully`));
     }else{
       console.log(`username / password wrong`);
+    }
+  }
+
+  static logoutEmployeeView(logoutCondition,username){
+    if(logoutCondition == true){
+      console.log((`user ${username} logout in successfully`));
     }
   }
 
