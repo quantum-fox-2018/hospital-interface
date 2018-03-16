@@ -15,11 +15,11 @@ class Controller {
       help.push("listpatient")
       View.display(help.join("\n").toString())
     }else if (command[2].toLowerCase() === "register") {
-      let info = Model.register(command[3], command[4], command[5], function(str){
+      let info = Model.register(command.slice(3,6), function(str){
         View.display(str)
       })
     }else if(command[2].toLowerCase() === "login"){
-      let info = Model.login(command[3], command[4], function(str){
+      let info = Model.login(command.slice(3,5), function(str){
         View.display(str)
       })
     }else if(command[2].toLowerCase() === "addpatient"){
@@ -27,7 +27,7 @@ class Controller {
       for (var i = 4; i < command.length; i++) {
         listPenyakit.push(command[i])
       }
-      Model.addPatient(command[3], listPenyakit, function(str){
+      Model.addPatient(command, function(str){
         View.display(str)
       })
     }else if(command[2].toLowerCase() === "logout"){

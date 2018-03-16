@@ -16,9 +16,11 @@ class Model {
     })
   }
 
-  static register(username, password, role, callback){
-    Model.readData('./employee.json', function(data){
-      let employees = data
+  static register(command, callback){
+    let username = command[0]
+    let password = command[1]
+    let role = command[2]
+    Model.readData('./employee.json', function(employees){
       let employee = new Employee(username, role, username, password)
       employees.push(employee)
       let str = `save data success ${JSON.stringify(employee)}. Total employee : ${employees.length}`
@@ -27,9 +29,10 @@ class Model {
     })
   }
 
-  static login(username, password, callback){
-    Model.readData('./employee.json', function(data){
-      let employees = data
+  static login(command, callback){
+    let username = command[0]
+    let password = command[1]
+    Model.readData('./employee.json', function(employees){
       let str = "username/password wrong"
       for (var i = 0; i < employees.length; i++) {
         if (employees[i].isLogin === true) {
@@ -53,8 +56,7 @@ class Model {
   }
 
   static logout(callback){
-    Model.readData('./employee.json', function(data){
-      let employees = data
+    Model.readData('./employee.json', function(employees){
       let status = false
       let str = "you need to login to logout"
 
@@ -70,9 +72,13 @@ class Model {
 
   }
 
-  static addPatient(nama, penyakitArr, callback){
-    Model.readData('./employee.json', function(data){
-      let employees = data
+  static addPatient(command, callback){
+    let nama = command[3]
+    let penyakitArr = []
+    for (var i = 4; i < command.length; i++) {
+      penyakitArr.push(command[i])
+    }
+    Model.readData('./employee.json', function(employees){
       let str = "tidak memiliki akses untuk add patient"
       for (var i = 0; i < employees.length; i++) {
         if (employees[i].isLogin === true) {
@@ -97,8 +103,7 @@ class Model {
   }
 
   static status(callback){
-    Model.readData('./employee.json', function(data){
-      let employees = data
+    Model.readData('./employee.json', function(employees){
       let str = "belum login, login terlebih dahulu"
       for (var i = 0; i < employees.length; i++) {
         if (employees[i].isLogin === true) {
