@@ -1,6 +1,6 @@
 "use strict"
 const fs = require('fs');
-const employees = './listOfEmployee.json';
+const fileName = './listOfEmployee.json';
 const logInfo = './userLog.json';
 const patients = './patient.json';
 
@@ -11,6 +11,60 @@ class Hospital {
     this.patients = patients
     this.location = location
   }
+
+  static readFileEmployee(path, callback) {
+    fs.readFile(path, 'utf8', function (err, data) {
+      let dataOfEmployee = JSON.parse(data);
+      callback(dataOfEmployee);
+    })
+  }
+
+  static writeFileEmployee(path, dataObj, cbWriteFile) {
+    let dataStr = JSON.stringify(dataObj, null, 2)
+    fs.writeFile(path, dataStr, function (err) {
+      if (err) {
+        cbWriteFile(err)
+      } else {
+        cbWriteFile('status message');
+      }
+
+    });
+  }
+
+  static addEmployee(name, password, position, cbAddEmployee) {
+    Hospital.readFileEmployee(fileName, (dataEmployee) => {
+      let objEmployee = new Employee(name, password, name, position);
+      dataEmployee.push(objEmployee);
+
+      Hospital.writeFileEmployee(fileName, dataEmployee, function (statusMessage) {
+        let totalEmployee = dataEmployee.length;
+        statusMessage = 'save data success'
+        cbAddEmployee(statusMessage, objEmployee, totalEmployee)
+      });
+    });
+  }
+
+  static loginEmployee(username, password, cbLoginEmployee) {
+    Hospital.readFileEmployee(fileName, function(dataLog) {
+      let loggedUser;
+      for (let i = 0; i < dataLog.length; i++) {
+        if (dataLog[i].name === username && dataLog[i].password === password) {
+          dataLog[i].status = true;
+          loggedUser = dataLog[i];
+          break;
+        }
+        if (dataLog[i].name !== username || dataLog[i].password !== password) {
+          loggedUser = dataLog[i];
+          break;
+        }
+      }
+      Hospital.writeFileEmployee(logInfo, loggedUser, function (statusMessage) {
+        statusMessage = 'logged in succesfully'
+        cbLoginEmployee(statusMessage, loggedUser);
+      });
+    });
+  }
+
 }
 
 class Patient {
@@ -22,61 +76,17 @@ class Patient {
 }
 
 class Employee {
-  constructor(name, position, username, password) {
+  constructor(name, password, position, username) {
     this.name = name
+    this.password = password
     this.position = position
     this.username = username
-    this.password = password
-  }
-}
-
-class Model {
-  static readFileEmployee() {
-    let dataOfEmployee = JSON.parse(fs.readFileSync(employees, 'utf8'));
-
-    return dataOfEmployee;
-  }
-
-  static readFileUserLog() {
-    let dataOfUserLog = JSON.parse(fs.readFileSync(logInfo, 'utf8'));
-
-    return dataOfUserLog;
-  }
-
-  static readFilePatient() {
-    let dataOfPtient = JSON.parse(fs.readFileSync(employees, 'utf8'));
-
-    return dataOfPtient;
-  }
-
-  static writeFileEmployee(data) {
-    let stringify = JSON.stringify(data);
-    let employeeData = fs.writeFileSync(employees, stringify);
-  }
-
-  static writeFileUserLog(data) {
-    let stringify = JSON.stringify(data);
-    let userLogData = fs.writeFileSync(logInfo, stringify);
-  }
-
-  static writeFilePatient(data) {
-    let stringify = JSON.stringify(data);
-    let patient = fs.writeFileSync(patients, stringify);
-  }
-
-  static addEmployee(name, position, password) {
-    let employee = new Employee(name, position, name, password);
-    let arrayOfEmployee = Model.readFileEmployee();
-    arrayOfEmployee.push(employee);
-    Model.writeFileEmployee(arrayOfEmployee);
-    let totalEmployee = arrayOfEmployee.length;
-    return [employee, totalEmployee];
+    this.status = false;
   }
 }
 
 module.exports = {
   Hospital,
   Patient,
-  Employee,
-  Model
+  Employee
 };

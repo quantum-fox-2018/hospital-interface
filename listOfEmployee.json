@@ -1,1 +1,16 @@
-[{"name":"ihsan","position":"12345","username":"ihsan","password":"dokter"},{"name":"ihsan","position":"12345","username":"ihsan","password":"dokter"},{"name":"ihsan","position":"12345","username":"ihsan","password":"dokter"}]
+[
+  {
+    "name": "ihsan",
+    "password": "12345",
+    "position": "ihsan",
+    "username": "dokter",
+    "status": false
+  },
+  {
+    "name": "mamat",
+    "password": "00000",
+    "position": "mamat",
+    "username": "dokter",
+    "status": false
+  }
+]

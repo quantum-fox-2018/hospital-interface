@@ -1,8 +1,16 @@
 const Controller = require('./controller.js');
 
 class View {
-    static registration(data) {
-        console.log(`save data succes {"username":${data[0].username}, "password":${data[0].password}, "role":${data[0].position}}. Total employee ${data[1]}`);
+    static registration(statusMessage, objEmployee, totalEmployee) {
+        console.log(`${statusMessage} ${JSON.stringify(objEmployee)}. Total employee ${totalEmployee}`);
+    }
+
+    static login(statusMessage, loggedUser) {
+        if (loggedUser.status === false) {
+            console.log(`username / password wrong`);
+        } else {
+            console.log(`user ${loggedUser.name} ${statusMessage}`);
+        }
     }
 }
 
