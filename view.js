@@ -12,6 +12,18 @@ class View {
             console.log(`user ${loggedUser.name} ${statusMessage}`);
         }
     }
+
+    static patientLog(statusMessage, dataPatient) {
+        if (dataPatient.position !== 'dokter' && dataPatient.status === true || dataPatient.status === false) {
+            console.log(statusMessage);
+        } else {
+            console.log(`${statusMessage}. Total data pasien: ${dataPatient.length}`);
+        }
+    }
+
+    static logout(statusMessage) {
+        console.log(statusMessage)
+    }
 }
 
 module.exports = View;

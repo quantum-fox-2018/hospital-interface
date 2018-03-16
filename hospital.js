@@ -32,8 +32,8 @@ class Hospital {
   }
 
   static addEmployee(name, password, position, cbAddEmployee) {
-    Hospital.readFileEmployee(fileName, (dataEmployee) => {
-      let objEmployee = new Employee(name, password, name, position);
+    Hospital.readFileEmployee(fileName, function (dataEmployee) {
+      let objEmployee = new Employee(name, password, position, name);
       dataEmployee.push(objEmployee);
 
       Hospital.writeFileEmployee(fileName, dataEmployee, function (statusMessage) {
@@ -53,14 +53,43 @@ class Hospital {
           loggedUser = dataLog[i];
           break;
         }
-        if (dataLog[i].name !== username || dataLog[i].password !== password) {
-          loggedUser = dataLog[i];
-          break;
-        }
       }
       Hospital.writeFileEmployee(logInfo, loggedUser, function (statusMessage) {
         statusMessage = 'logged in succesfully'
         cbLoginEmployee(statusMessage, loggedUser);
+      });
+    });
+  }
+
+  static addPatient(name, diagnosis, cbPatients) {
+    Hospital.readFileEmployee(logInfo, function(dataLog) {
+      if (dataLog.position === 'dokter' && dataLog.status === true) {
+        Hospital.readFileEmployee(patients, function(dataPatient) {
+          let newId = dataPatient.length + 1;
+          let patient = new Patient(newId, name, diagnosis);
+          dataPatient.push(patient);
+          Hospital.writeFileEmployee(patients, dataPatient, function(statusMessage) {
+            statusMessage = 'data pasien berhasil ditambahkan';
+            cbPatients(statusMessage, dataPatient);
+          }); 
+        });
+      } else {
+        if (dataLog.position !== 'dokter') {
+          let message = 'tidak memiliki akses untuk add patient';
+          cbPatients(message, dataLog);
+        }
+      }
+    });
+  }
+
+  static logoutEmployee(logout, cbLogout) {
+    Hospital.readFileEmployee(logInfo, function(dataLog) {
+      if (dataLog.status === true) {
+        dataLog.status = false;
+      }
+      Hospital.writeFileEmployee(logInfo, dataLog, function(statusMessage) {
+        statusMessage = 'you have logged out'
+        cbLogout(statusMessage);
       });
     });
   }

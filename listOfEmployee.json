@@ -1,16 +1,16 @@
 [
   {
-    "name": "ihsan",
-    "password": "12345",
-    "position": "ihsan",
-    "username": "dokter",
+    "name": "jhony",
+    "password": "123",
+    "position": "pedagang",
+    "username": "jhony",
     "status": false
   },
   {
-    "name": "mamat",
-    "password": "00000",
-    "position": "mamat",
-    "username": "dokter",
+    "name": "ihsan",
+    "password": "124",
+    "position": "dokter",
+    "username": "ihsan",
     "status": false
   }
 ]

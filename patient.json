@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "id": 1,
+    "name": "naruto",
+    "diagnosis": [
+      "flue",
+      "pusing",
+      "diare"
+    ]
+  }
+]
