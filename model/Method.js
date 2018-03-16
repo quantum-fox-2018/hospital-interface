@@ -1,8 +1,8 @@
 const fs = require('fs')
 
-const Employee = require('./Employee.js')
-const Patient = require('./Patient.js')
-const Hospital = require('./Hospital.js')
+const Employee = require('./EmployeeModel.js')
+const Patient = require('./PatientModel.js')
+const Hospital = require('./HospitalModel.js')
 
 class Model {
   static employeeList(callback){
@@ -17,7 +17,7 @@ class Model {
       let employeeData = JSON.parse(data)
       let newEmployee = new Employee(input[0],input[1],input[2],input[3])
       let employee = {
-        id:employeeData.length+1,
+        id:employeeData.length+1
         name:newEmployee.name,
         position:newEmployee.position,
         username:newEmployee.username,
