@@ -14,8 +14,8 @@ class File{
     DisplayData.displayRegisterDone(employee, totEmployee)
   }
 
-  static datalogin(){
-    
+  static cekLogin(datalogin){
+    Data.cekData(datalogin)
   }
 
 }

@@ -1,26 +1,14 @@
 [
   {
-    "name": "myasir",
+    "name": "muhammadYasirMaulana",
     "username": "yasir",
-    "password": "1234",
+    "password": "12345",
     "position": "dokter"
   },
   {
-    "name": "myasir",
-    "username": "yasir",
-    "password": "1234",
-    "position": "dokter"
-  },
-  {
-    "name": "myasir",
-    "username": "yasir",
-    "password": "1234",
-    "position": "dokter"
-  },
-  {
-    "name": "myasir",
-    "username": "yasir",
-    "password": "1234",
-    "position": "dokter"
+    "name": "ahmadDahlan",
+    "username": "dahlan",
+    "password": "12345",
+    "position": "pasien"
   }
 ]
