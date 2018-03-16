@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Abraham John",
+    "position": "admin",
+    "user name": "abrahamj",
+    "password": "aj01",
+    "login": false
+  },
+  {
+    "name": "Astahiam Sudoso",
+    "position": "office boy",
+    "username": "astahiamSD",
+    "password": "asd01",
+    "login": false
+  },
+  {
+    "name": "Bruce Wyne",
+    "position": "admin",
+    "username": "batRider",
+    "password": "bm128",
+    "login": false
+  },
+  {
+    "name": "Scarlett Johansson",
+    "position": "dokter",
+    "username": "blackWidow",
+    "password": "sc01234",
+    "login": false
+  },
+  {
+    "name": "Rebecca Olsen",
+    "position": "dokter",
+    "username": "scarlettwitch",
+    "password": "sw342",
+    "login": false
+  }
+]
