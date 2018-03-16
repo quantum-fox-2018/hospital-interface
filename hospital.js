@@ -1,4 +1,4 @@
-class Hospital {
+ Hospital {
   constructor(name, location, employees, patients) {
     this.name = name
     this.employees = employees
@@ -7,7 +7,7 @@ class Hospital {
   }
 }
 
-class Patient {
+class Patient extends Hospital {
   constructor(id, name, diagnosis) {
     this.id = id
     this.name = name
@@ -15,7 +15,7 @@ class Patient {
   }
 }
 
-class Employee {
+class Employee extends Hospital{
   constructor(name, position, username, password) {
     this.name = name
     this.position = position
@@ -23,3 +23,8 @@ class Employee {
     this.password = password
   }
 }
+
+let hospital = new Hospital(argv)
+
+
+//
