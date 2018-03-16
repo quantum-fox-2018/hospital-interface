@@ -1,26 +1,30 @@
 [
   {
+    "username": "yosa",
+    "password": "123",
+    "name": "",
+    "position": "dokter",
+    "statusLogin": false
+  },
+  {
+    "username": "risna",
+    "password": "123",
     "name": "",
     "position": "receptionist",
-    "username": "risna",
-    "password": "123"
+    "statusLogin": false
   },
   {
-    "name": "",
-    "position": "office boy",
     "username": "joko",
-    "password": "123"
+    "password": "123",
+    "name": "",
+    "position": "ob",
+    "statusLogin": false
   },
   {
+    "username": "wilman",
+    "password": "456",
     "name": "",
     "position": "admin",
-    "username": "eki",
-    "password": "145"
-  },
-  {
-    "name": "",
-    "position": "admin",
-    "username": "wulan",
-    "password": "13"
+    "statusLogin": false
   }
 ]

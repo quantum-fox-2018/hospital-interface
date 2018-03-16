@@ -1,11 +1,23 @@
+var Table = require('cli-table');
+
+
 class ViewEmployee {
     constructor(){
 
     }
     static list(data){
+        let table = new Table({
+            head: ['No','Username','Password','Position','Status'],
+            colWidths: [8,15,13,20,15]
+        })
+
+        let no = 1;
         for(let i=0; i<data.length; i++){
-            console.log(`${data[i].username} ${data[i].password} ${data[i].position}`)
+            table.push([`${no}`, `${data[i].username}`, `${data[i].password}`, `${data[i].position}`,`${data[i].statusLogin}`])
+            no++;
         }
+        
+        console.log(table.toString())
     }
 
     static notifRegister(obj, dataLength){

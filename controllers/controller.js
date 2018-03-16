@@ -1,6 +1,4 @@
-const modelHospital = require('../models/modelHospital.js')
-const Employee = require('../models/modelEmployee.js')
-
+const Model = require('../models/index')
 const viewEmployee = require('../views/viewEmployee')
 
 
@@ -8,16 +6,23 @@ class Controller {
     constructor(){
          
     }
-    static manageCommand(command, value1, value2, value3){
+    static manageCommand(command, argvArray){
         switch (command) {
             case 'list':
-                modelHospital.listEmployee(viewEmployee.list)
+                // udah bener
+                Model.listEmployee(viewEmployee.list)
                 break;
             case 'register':
-                modelHospital.registerEmployee(value1, value2, value3, viewEmployee.notifRegister)
+                Model.registerEmployee(argvArray[0], argvArray[1], argvArray[2], viewEmployee.notifRegister)
                 break;
             case 'login':
-                modelHospital.login(value1, value2, viewEmployee.notifLogin)
+                Model.login(argvArray[0], argvArray[1], viewEmployee.notifLogin)
+                break;
+            case 'addPatient':
+                Model.dokterAccessInputPatient(argvArray[0], argvArray.slice(1));
+                break;
+            case 'logout':
+                Model.logout();
                 break;
             default:
                 break;
