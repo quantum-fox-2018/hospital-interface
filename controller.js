@@ -15,7 +15,12 @@ class File{
   }
 
   static cekLogin(datalogin){
-    Data.cekData(datalogin)
+    Data.cekData(datalogin, File.lemparStatus)
+  }
+
+  static lemparStatus(flagStatusCb, flagUserCb){
+    // console.log('cb berhasil', flagdariCb)
+    DisplayData.displayStatusLogin(flagStatusCb, flagUserCb)
   }
 
 }

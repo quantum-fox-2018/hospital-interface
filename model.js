@@ -20,21 +20,23 @@ class Data{
     })
   }
 
-  static cekData(datalogin){
+  static cekData(datalogin, cb){
     // console.log(`${datalogin.username} ${datalogin.password}`)
     fs.readFile('./employee.json','utf8',(err, dataEmployee) => {
       // console.log(dataEmployee)
       // console.log(JSON.parse(dataEmployee).length)
       let objEmployee = JSON.parse(dataEmployee)
+      let flagCekUser = false
+      let flagUser = ''
       for(let i=0; i<objEmployee.length; i++){
         if(objEmployee[i].username === datalogin.username && objEmployee[i].password === datalogin.password ){
-          console.log(`user ${datalogin.username} logged in successfully`)
-        }
-        else {
-          console.log(`username / password wrong`)
+          // console.log(`user ${datalogin.username} logged in successfully`)
+          flagCekUser = true
+          flagUser = objEmployee[i].username
         }
       }
-
+      // console.log(flagCekUser)
+      cb(flagCekUser, flagUser)
     })
   }
 
