@@ -1,3 +1,4 @@
+const Controller = require('./controller.js');
 var Table = require('cli-table')
 
 class View{
@@ -5,17 +6,24 @@ class View{
         console.log(str);
     }
 
-    static showTable(data){
-        let keyHeader = Object.keys(data);
-        var table = new Table({
-            header: keyHeader,
-        })
+    static showConfirmation(str){
+        console.log(str);
+    }
 
-        for(let indexData = 0; indexData<data.length; indexData++){
-            table.push(data[indexData].name, data[indexData].position, data[indexData].username, data[indexData].password, data[indexData].isLogin);
-        }
+    static showTable(data){
+        let parsedData = JSON.parse(data);
+        let keyHeader = Object.keys(parsedData[0]);
+        var table = new Table({
+            head: keyHeader,
+        })
         
-        console.log(table);
+        let result =[];
+        for(let indexData = 0; indexData<parsedData.length; indexData++){
+            result = [];
+            result.push(parsedData[indexData].name, parsedData[indexData].position, parsedData[indexData].username, parsedData[indexData].password, parsedData[indexData].isLogin)
+            table.push(result);
+        }
+        console.log(table.toString());
     }
 }
 
