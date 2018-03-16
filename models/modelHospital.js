@@ -39,10 +39,9 @@ class Hospital {
     for(let i=0; i<dataEmploye.length; i++){
       if(dataEmploye[i].username == username && dataEmploye[i].password == password){
         return callback(true, dataEmploye[i].username)
-      } else {
-        return callback(false)
       }
     }
+    return callback(false)
   }
 }
   

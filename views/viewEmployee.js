@@ -4,7 +4,7 @@ class ViewEmployee {
     }
     static list(data){
         for(let i=0; i<data.length; i++){
-            console.log(`${data[i].username} ${data[i].password} ${data[i].role}`)
+            console.log(`${data[i].username} ${data[i].password} ${data[i].position}`)
         }
     }
 
