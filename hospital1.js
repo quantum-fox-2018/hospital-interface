@@ -23,3 +23,17 @@ class Employee {
     this.password = password
   }
 }
+
+
+let hospital = new Hospital();
+// console.log(hospital);
+
+let patient = new Patient();
+// console.log(patient);
+
+let employee = new Employee();
+// console.log(employee);
+
+
+
+
