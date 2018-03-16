@@ -1,0 +1,14 @@
+[
+  {
+    "username": "budi",
+    "position": "dokter",
+    "password": "qwerty",
+    "status": true
+  },
+  {
+    "username": "angga",
+    "position": "admin",
+    "password": "asdfg",
+    "status": false
+  }
+]
