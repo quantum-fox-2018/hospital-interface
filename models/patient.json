@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "name": "Daniel",
+    "diagnosis": [
+      "batuk",
+      "flu",
+      "pilek",
+      "demam"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "sakit hati",
+    "diagnosis": [
+      "greges"
+    ]
+  }
+]

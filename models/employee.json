@@ -1,0 +1,20 @@
+[
+  {
+    "username": "budi",
+    "password": "123456",
+    "role": "dokter",
+    "statusLogin": false
+  },
+  {
+    "username": "angga",
+    "password": "54321",
+    "role": "admin",
+    "statusLogin": false
+  },
+  {
+    "username": "wika",
+    "password": "2727",
+    "role": "CEO",
+    "statusLogin": false
+  }
+]
