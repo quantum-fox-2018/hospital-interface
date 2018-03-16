@@ -1,4 +1,4 @@
-class Hospital {
+class ModelHospital {
   constructor(name, location, employees, patients) {
     this.name = name
     this.employees = employees
@@ -9,4 +9,4 @@ class Hospital {
 
 
 
-module.exports = Hospital
+module.exports = ModelHospital
