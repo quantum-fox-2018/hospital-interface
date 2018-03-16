@@ -7,6 +7,15 @@ class Hospital {
   }
 }
 
+class Employee {
+  constructor(name, username, password, position) {
+    this.name = name
+    this.username = username
+    this.password = password
+    this.position = position
+  }
+}
+
 class Patient {
   constructor(id, name, diagnosis) {
     this.id = id
@@ -15,11 +24,4 @@ class Patient {
   }
 }
 
-class Employee {
-  constructor(name, position, username, password) {
-    this.name = name
-    this.position = position
-    this.username = username
-    this.password = password
-  }
-}
+module.exports = Employee
