@@ -1,0 +1,31 @@
+[
+  {
+    "username": "budi",
+    "password": "123456",
+    "position": "dokter"
+  },
+  {
+    "username": "liza",
+    "password": "123",
+    "position": "dokter",
+    "login": true
+  },
+  {
+    "username": "Kia",
+    "password": "321",
+    "position": "admin",
+    "login": true
+  },
+  {
+    "username": "cahyo",
+    "password": "234",
+    "position": "admin",
+    "login": true
+  },
+  {
+    "username": "wiwi",
+    "password": "1234",
+    "position": "dokter",
+    "login": false
+  }
+]

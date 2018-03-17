@@ -1,0 +1,27 @@
+[
+  {
+    "id": "1",
+    "name": "liza",
+    "diagnosis": "batuk pilek asma"
+  },
+  {
+    "id": "2",
+    "name": "lina",
+    "diagnosis": "batuk pilek asma"
+  },
+  {
+    "id": "4",
+    "name": "lia",
+    "diagnosis": "batuk pilek asma"
+  },
+  {
+    "id": 5,
+    "name": "berlin",
+    "diagnosis": "batuk diare demam"
+  },
+  {
+    "id": 6,
+    "name": "dian",
+    "diagnosis": "demam berdarah"
+  }
+]
