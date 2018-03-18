@@ -39,15 +39,43 @@ class Hospital {
   static login(argvLogin, callback){
     this.read(function (employees){
       let login = false;
+      let user;
       for(let i=0; i<employees.length; i++){
         if(employees[i].username === argvLogin[0] && employees[i].password === argvLogin[1]){
           login = true
           employees[i].login = true
-          fs.writeFile('./employee.json', JSON.stringify(employees, null, 2), 'utf8', (err) => {
-            callback(login, employees[i])
-          });
+          user = employees[i]
         }
       }
+
+      fs.writeFile('./employee.json', JSON.stringify(employees, null, 2), 'utf8', (err) => {
+        // console.log(login);
+        callback(login, user)
+      });
+
+    });
+  }
+
+  static logout(uname, callback){
+    this.read((employees) => {
+      let findUser = false
+      let user;
+      for (let i=0; i<employees.length; i++){
+        if(uname === employees[i].username && employees[i].login === true){
+          employees[i].login = false
+          user = employees[i].username
+          findUser = true;
+        }
+      }
+
+      fs.writeFile('./employee.json', JSON.stringify(employees, null, 2), 'utf8', (err) => {
+        if(findUser){
+          callback(user ,true)
+        }else{
+          callback(false, false)
+        }
+      });
+
     });
   }
 

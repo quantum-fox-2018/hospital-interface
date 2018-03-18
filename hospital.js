@@ -1,3 +1,6 @@
+const fs = require('fs')
+
+
 class Hospital {
   constructor(name, location, employees, patients) {
     this.name = name
@@ -16,10 +19,10 @@ class Patient {
 }
 
 class Employee {
-  constructor(name, position, username, password) {
-    this.name = name
-    this.position = position
+  constructor(username, password, position) {
     this.username = username
     this.password = password
+    this.position = position
+    this.login = false
   }
 }

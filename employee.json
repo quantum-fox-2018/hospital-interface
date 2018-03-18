@@ -2,30 +2,37 @@
   {
     "username": "budi",
     "password": "123456",
-    "position": "dokter"
+    "position": "dokter",
+    "login": false
   },
   {
     "username": "liza",
     "password": "123",
     "position": "dokter",
-    "login": true
+    "login": false
   },
   {
     "username": "Kia",
     "password": "321",
     "position": "admin",
-    "login": true
+    "login": false
   },
   {
     "username": "cahyo",
     "password": "234",
     "position": "admin",
-    "login": true
+    "login": false
   },
   {
     "username": "wiwi",
     "password": "1234",
     "position": "dokter",
+    "login": true
+  },
+  {
+    "username": "Nirwan",
+    "password": "112",
+    "position": "admin",
     "login": false
   }
 ]

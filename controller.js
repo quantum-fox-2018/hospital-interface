@@ -30,6 +30,10 @@ class Controller {
     Hospital.login(arrArgv, View.login)
   }
 
+  static logout(uname){
+    Hospital.logout(uname, View.logout)
+  }
+
   static addPatient(dataPatient){
     let argvPatient = dataPatient.split(",")
     Hospital.addPatient(argvPatient, View.addPatient)
