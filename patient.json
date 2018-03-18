@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Banu",
+    "diagnosis": "diare"
+  },
+  {
+    "id": 2,
+    "name": "Sandy",
+    "diagnosis": "Fraktur"
+  },
+  {
+    "id": 3,
+    "name": "Lala",
+    "diagnosis": "Vomit"
+  },
+  {
+    "id": 4,
+    "name": "Sani",
+    "diagnosis": "Dermatitis"
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "name": "David",
+    "position": "Dokter",
+    "username": "davidjosh",
+    "password": "12345",
+    "status": "access"
+  },
+  {
+    "name": "Udin",
+    "position": "admin",
+    "username": "udincihuy",
+    "password": "123",
+    "status": "no access"
+  },
+  {
+    "name": "Joko",
+    "position": "ob",
+    "username": "jokokeren",
+    "password": "123",
+    "status": "no access"
+  },
+  {
+    "name": "Ayu",
+    "position": "Suster",
+    "username": "ayuoke",
+    "password": "123",
+    "status": "access"
+  }
+]
