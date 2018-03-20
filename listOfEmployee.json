@@ -12,5 +12,12 @@
     "position": "dokter",
     "username": "ihsan",
     "status": false
+  },
+  {
+    "name": "budi",
+    "password": "132465",
+    "position": "kasir",
+    "username": "budi",
+    "status": false
   }
 ]

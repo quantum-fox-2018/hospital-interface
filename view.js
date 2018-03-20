@@ -6,10 +6,14 @@ class View {
     }
 
     static login(statusMessage, loggedUser) {
-        if (loggedUser.status === false) {
+        try {
+            if (loggedUser.status === false) {
+                console.log(`username / password wrong`);
+            } else {
+                console.log(`user ${loggedUser.name} ${statusMessage}`);
+            }   
+        } catch (error) {
             console.log(`username / password wrong`);
-        } else {
-            console.log(`user ${loggedUser.name} ${statusMessage}`);
         }
     }
 
@@ -22,7 +26,7 @@ class View {
     }
 
     static logout(statusMessage) {
-        console.log(statusMessage)
+        console.log(statusMessage);
     }
 }
 
