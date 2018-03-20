@@ -20,54 +20,75 @@ class Patient {
 
 class Model{
 
-  static readEmployeeData(cbEmployeeData){
-    fs.readFile('employee.json','utf8', (err,employeeData) => {
-      cbEmployeeData(JSON.parse(employeeData))
+  constructor(name, location) {
+    this.name = name
+    this.employees = []
+    this.patients = []
+    this.location = location
+  }
+
+  static readEmployeeData(cbHospitalData){
+    fs.readFile('employee.json','utf8', (err,hospitalData) => {
+      cbHospitalData(JSON.parse(hospitalData));
     });
   }
 
   static registerEmployeeCommand(username,password,position,cbNewEmployeeData){
 
-    this.readEmployeeData((employeeData) =>{
+    this.readEmployeeData(function(hospitalData){
+
       let newEmployee = new Employee(username,password,position);
-      employeeData.push(newEmployee);
-      this.writeEmployeeData(employeeData)
-      cbNewEmployeeData(employeeData);
+
+      if(hospitalData.length == 0){
+        var hospital= new Model("Pondok Indah", "Deket MCD");
+        hospital.employees.push(newEmployee);
+        Model.writeEmployeeData(hospital)
+        cbNewEmployeeData(hospital.employees);
+      }
+      else{
+        hospitalData.employees.push(newEmployee);
+        Model.writeEmployeeData(hospitalData)
+        let employeesData = hospitalData.employees;
+        cbNewEmployeeData(employeesData);
+      }
     });
 
   }
 
-  static writeEmployeeData(employeeData){
-    fs.writeFile('employee.json',JSON.stringify(employeeData, null, 2),'utf8',(err)=>{
+  static writeEmployeeData(hospitalData){
+    fs.writeFile('employee.json',JSON.stringify(hospitalData, null, 2),'utf8',(err)=>{
     });
   }
 
   static loginEmployeeCommand(username,password,cbLoginCondition){
 
-    this.readEmployeeData((employeeData)=>{
+    this.readEmployeeData((hospitalData)=>{
+
       let loginCondition = false
+      let employeeData = hospitalData.employees;
       for(let i=0;i<employeeData.length;i++){
         if(employeeData[i].username == username && employeeData[i].password == password){
-          employeeData[i].status = "available";
+          hospitalData.employees[i].status = "available";
           loginCondition = true;
         }
         else{
-          employeeData[i].status = "unavailable";
+          hospitalData.employees[i].status = "unavailable";
         }
       }
-      this.writeEmployeeData(employeeData);
+      Model.writeEmployeeData(hospitalData);
       cbLoginCondition(loginCondition)
     });
 
   }
 
   static logoutEmployeeCommand(username,cbLogoutCondition){
-    this.readEmployeeData((employeeData)=>{
+    this.readEmployeeData((hospitalData)=>{
       let logoutCondition = false;
+      let employeeData = hospitalData.employees
       for(let i=0;i<employeeData.length;i++){
         if(employeeData[i].username == username && employeeData[i].status == "available"){
-          employeeData[i].status = "unavailable";
-          this.writeEmployeeData(employeeData);
+          hospitalData.employees[i].status = "unavailable";
+          Model.writeEmployeeData(hospitalData);
           logoutCondition = true;
         }
       }
@@ -77,8 +98,8 @@ class Model{
 
   static addPatientCommand(patientName,penyakitPasien,cbUpdateDataPatient){
 
-    this.readEmployeeData(cbEmployeeData=>{
-      let employeeData = cbEmployeeData;
+    this.readEmployeeData(hospitalData=>{
+      let employeeData = hospitalData.employees;
       let checkData = false;
       for(let i=0;i<employeeData.length;i++){
         //Cari dokter yang available
@@ -88,12 +109,14 @@ class Model{
             employeeData[i].patient = [];
           }
           let newPatient = new Patient((employeeData[i].patient.length+1),patientName,penyakitPasien);
-          employeeData[i].patient.push(newPatient);
-          Model.writeEmployeeData(employeeData);
+          hospitalData.employees[i].patient.push(newPatient);
+          hospitalData.patients.push(newPatient);
+          Model.writeEmployeeData(hospitalData);
           checkData = true;
           cbUpdateDataPatient(employeeData[i]);
         }
       }
+
       if(checkData == false){
         cbUpdateDataPatient(undefined)
       }

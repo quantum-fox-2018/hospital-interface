@@ -1,117 +1,60 @@
-[
-  {
-    "name": "rama",
-    "position": "dokter",
-    "username": "rama",
-    "password": "123456",
-    "status": "available",
-    "patient": [
-      {
-        "id": 1,
-        "name": "dimas",
-        "diagnosis": [
-          "batuk",
-          "flu",
-          "pilek"
-        ]
-      },
-      {
-        "id": 2,
-        "name": "dani",
-        "diagnosis": [
-          "batuk",
-          "flu",
-          "pilek"
-        ]
-      },
-      {
-        "id": 3,
-        "name": "dian",
-        "diagnosis": [
-          "batuk",
-          "flu",
-          "pilek"
-        ]
-      },
-      {
-        "id": 4,
-        "name": "abu",
-        "diagnosis": [
-          "batuk",
-          "flu",
-          "pilek"
-        ]
-      },
-      {
-        "id": 5,
-        "name": "amar",
-        "diagnosis": [
-          "batuk",
-          "flu",
-          "pilek"
-        ]
-      },
-      {
-        "id": 6,
-        "name": "amarr",
-        "diagnosis": [
-          "batuk",
-          "flu",
-          "pilek"
-        ]
-      },
-      {
-        "id": 7,
-        "name": "amarrr",
-        "diagnosis": [
-          "batuk",
-          "flu",
-          "pilek"
-        ]
-      },
-      {
-        "id": 8,
-        "name": "amarrr",
-        "diagnosis": [
-          "batuk",
-          "flu",
-          "pilek"
-        ]
-      },
-      {
-        "id": 9,
-        "name": "amarrr",
-        "diagnosis": [
-          "batuk",
-          "flu",
-          "pilek",
-          "demam"
-        ]
-      },
-      {
-        "id": 10,
-        "name": "amarrr",
-        "diagnosis": [
-          "batuk",
-          "flu",
-          "pilek",
-          "meriang"
-        ]
-      }
-    ]
-  },
-  {
-    "name": "budi",
-    "position": "admin",
-    "username": "budi",
-    "password": "123456",
-    "status": "unavailable"
-  },
-  {
-    "name": "udin",
-    "position": "suster",
-    "username": "udin",
-    "password": "123456",
-    "status": "unavailable"
-  }
-]
+{
+  "name": "Pondok Indah",
+  "employees": [
+    {
+      "name": "ramadiansyah",
+      "position": "dokter",
+      "username": "ramadiansyah",
+      "password": "123456",
+      "status": "available",
+      "patient": [
+        {
+          "id": 1,
+          "name": "dimas",
+          "diagnosis": [
+            "demam",
+            "flu",
+            "pilek"
+          ]
+        },
+        {
+          "id": 2,
+          "name": "erry",
+          "diagnosis": [
+            "demam",
+            "flu",
+            "pilek"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "budi",
+      "position": "dokter",
+      "username": "budi",
+      "password": "123456",
+      "status": "unavailable"
+    }
+  ],
+  "patients": [
+    {
+      "id": 1,
+      "name": "dimas",
+      "diagnosis": [
+        "demam",
+        "flu",
+        "pilek"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "erry",
+      "diagnosis": [
+        "demam",
+        "flu",
+        "pilek"
+      ]
+    }
+  ],
+  "location": "Deket MCD"
+}

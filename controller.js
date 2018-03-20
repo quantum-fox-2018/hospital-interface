@@ -20,7 +20,7 @@ class Controller{
 
   static logoutEmployeeCommand(username,cbLogoutCondition){
     Model.logoutEmployeeCommand(username,(logoutCondition)=>{
-      View.logoutEmployeeView(logoutCondition);
+      View.logoutEmployeeView(logoutCondition,username);
     })
   }
   static addPatientCommand(patientName,penyakitPasien){
