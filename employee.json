@@ -1,0 +1,60 @@
+{
+  "name": "Pondok Indah",
+  "employees": [
+    {
+      "name": "ramadiansyah",
+      "position": "dokter",
+      "username": "ramadiansyah",
+      "password": "123456",
+      "status": "available",
+      "patient": [
+        {
+          "id": 1,
+          "name": "dimas",
+          "diagnosis": [
+            "demam",
+            "flu",
+            "pilek"
+          ]
+        },
+        {
+          "id": 2,
+          "name": "erry",
+          "diagnosis": [
+            "demam",
+            "flu",
+            "pilek"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "budi",
+      "position": "dokter",
+      "username": "budi",
+      "password": "123456",
+      "status": "unavailable"
+    }
+  ],
+  "patients": [
+    {
+      "id": 1,
+      "name": "dimas",
+      "diagnosis": [
+        "demam",
+        "flu",
+        "pilek"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "erry",
+      "diagnosis": [
+        "demam",
+        "flu",
+        "pilek"
+      ]
+    }
+  ],
+  "location": "Deket MCD"
+}

@@ -23,3 +23,11 @@ class Employee {
     this.password = password
   }
 }
+
+//Model
+
+class Model{
+  static readData(){
+
+  }
+}
