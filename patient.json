@@ -1,0 +1,33 @@
+[
+  {
+    "id": 1,
+    "name": "Joko",
+    "diagnosis": [
+      "flu",
+      "muntaber"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Riki",
+    "diagnosis": [
+      "puyeng",
+      "muntah"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Jemba",
+    "diagnosis": [
+      "perut",
+      "terlilit"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Budi",
+    "diagnosis": [
+      "flu budi"
+    ]
+  }
+]
