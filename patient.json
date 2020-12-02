@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "naruto",
+    "diagnosis": [
+      "flue",
+      "pusing",
+      "diare"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "jajang",
+    "diagnosis": [
+      "flu",
+      "pusing",
+      "demam"
+    ]
+  }
+]

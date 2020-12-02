@@ -1,0 +1,23 @@
+[
+  {
+    "name": "jhony",
+    "password": "123",
+    "position": "pedagang",
+    "username": "jhony",
+    "status": false
+  },
+  {
+    "name": "ihsan",
+    "password": "124",
+    "position": "dokter",
+    "username": "ihsan",
+    "status": false
+  },
+  {
+    "name": "budi",
+    "password": "132465",
+    "position": "kasir",
+    "username": "budi",
+    "status": false
+  }
+]
