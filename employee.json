@@ -1,0 +1,26 @@
+[
+  {
+    "name": "budi",
+    "position": "dokter",
+    "username": "budi",
+    "password": "123456"
+  },
+  {
+    "name": "miranda",
+    "position": "suster",
+    "username": "miranda",
+    "password": "123456"
+  },
+  {
+    "name": "agung",
+    "position": "staff-it",
+    "username": "agung",
+    "password": "123456"
+  },
+  {
+    "name": "udin",
+    "position": "security",
+    "username": "udin",
+    "password": "123456"
+  }
+]
